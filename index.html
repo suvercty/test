@@ -10,20 +10,68 @@
             max-width: 600px;
             margin: 20px auto;
             text-align: center;
+                      background: url('https://images.wallpapersden.com/image/download/anime-landscape-hd-ai-city_bmZmaGuUmZqaraWkpJRmbmdlrWZlbWU.jpg');
+            background-size: cover;
+            min-height: 100vh; /* Đảm bảo background phủ toàn trang */
+            
+            
         }
-        input, button {
+
+        
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.7); /* Nền trắng mờ bao phủ tất cả */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Đổ bóng */
+            text-align: center;
+        }
+
+        .logo {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            margin: 10px 0;
+        }
+
+        input {
             padding: 10px;
             margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
         }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
         #result {
             margin-top: 20px;
             text-align: left;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Tra cứu thông tin</h1>
-    <input type="text" id="searchInput" placeholder="Nhập Mã nhân viên Nhân sự cung cấp">
+    <div class="container">
+        <img src="https://mbs.com.vn/media/3eppxnr0/logo_new_sd_tren_nen_sang.png" alt="Logo" class="logo">
+        <h1>Tra cứu thông tin</h1>
+    <input type="text" id="searchInput" placeholder="Nhập Mã nhân viên hoặc Tên">
     <button onclick="searchData()">Tìm kiếm</button>
     <div id="result"></div>
 
@@ -35,7 +83,7 @@
         async function searchData() {
             const searchValue = document.getElementById('searchInput').value.trim();
             if (!searchValue) {
-                alert('Vui lòng nhập Mã nhân viên!');
+                alert('Vui lòng nhập Mã nhân viên hoặc Tên!');
                 return;
             }
 
@@ -46,7 +94,10 @@
                 const rows = data.values;
 
                 // Tìm hàng khớp với Mã nhân viên (cột đầu tiên)
-                const result = rows.find(row => row[0] === searchValue);
+                const result = rows.find(row => 
+                    row[0].toLowerCase() === searchValue.toLowerCase() || 
+                    row[1].toLowerCase() === searchValue.toLowerCase()
+                );
                 const resultDiv = document.getElementById('result');
 
                 if (result) {
