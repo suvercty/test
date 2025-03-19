@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu thông tin từ Google Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        #result {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tra cứu thông tin</h1>
+    <input type="text" id="searchInput" placeholder="Nhập Mã nhân viên">
+    <button onclick="searchData()">Tìm kiếm</button>
+    <div id="result"></div>
+
+    <script>
+        const API_KEY = 'AIzaSyD_hTaQmQ3ZbSR12zBizVek5ABAFH_DAHQ'; // Thay bằng API Key của mày
+        const SHEET_ID = '1UnfEaAk1vG5nUD7wfUVFkVPBZV56Z3_puYQric3pyuI'; // Thay bằng Sheet ID của mày
+        const RANGE = 'Trang tính1!A:G'; // Phạm vi dữ liệu (Sheet1, cột A đến D)
+
+        async function searchData() {
+            const searchValue = document.getElementById('searchInput').value.trim();
+            if (!searchValue) {
+                alert('Vui lòng nhập Mã nhân viên!');
+                return;
+            }
+
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const rows = data.values;
+
+                // Tìm hàng khớp với Mã nhân viên (cột đầu tiên)
+                const result = rows.find(row => row[0] === searchValue);
+                const resultDiv = document.getElementById('result');
+
+                if (result) {
+                    resultDiv.innerHTML = `
+                        <h3>Kết quả:</h3>
+                        <p><strong>Mã nhân viên:</strong> ${result[0]}</p>
+                        <p><strong>Họ tên:</strong> ${result[1]}</p>
+                        <p><strong>Mã chuyến bay đi:</strong> ${result[2]}</p>
+                        <p><strong>Giờ bay đi:</strong> ${result[3]}</p>
+<p><strong>Số phòng:</strong> ${result[4]}</p>
+<p><strong>Mã chuyến bay về:</strong> ${result[5]}</p>
+<p><strong>Giờ bay về:</strong> ${result[6]}</p>
+                    `;
+                } else {
+                    resultDiv.innerHTML = '<p>Không tìm thấy thông tin!</p>';
+                }
+            } catch (error) {
+                console.error('Lỗi:', error);
+                document.getElementById('result').innerHTML = '<p>Có lỗi xảy ra, thử lại sau!</p>';
+            }
+        }
+    </script>
+</body>
+</html>
