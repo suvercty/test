@@ -10,7 +10,7 @@
             max-width: 600px;
             margin: 20px auto;
             text-align: center;
-                      background: url('https://mbs.com.vn/media/ymqpkw1t/wallpapersden-com_anime-landscape-hd-ai-city_1920x1080.jpg');
+                      background: url('https://lg-golive.mbs.com.vn/files/uploads/2025/05/golive-web-bg.jpg');
             background-size: cover;
             min-height: 100vh; /* Đảm bảo background phủ toàn trang */
             
@@ -77,8 +77,8 @@
 
     <script>
         const API_KEY = 'AIzaSyD_hTaQmQ3ZbSR12zBizVek5ABAFH_DAHQ'; // Thay bằng API Key của mày
-        const SHEET_ID = '1UnfEaAk1vG5nUD7wfUVFkVPBZV56Z3_puYQric3pyuI'; // Thay bằng Sheet ID của mày
-        const RANGE = 'Trang tính1!A:G'; // Phạm vi dữ liệu (Sheet1, cột A đến D)
+        const SHEET_ID = '1WS4Na1Kbe9ztvCV9alr2ZrDES392WbDe'; // Thay bằng Sheet ID của mày
+        const RANGE = 'Trang tính1!A:L'; // Phạm vi dữ liệu (Sheet1, cột A đến D)
 
         async function searchData() {
             const searchValue = document.getElementById('searchInput').value.trim();
@@ -103,13 +103,17 @@
                 if (result) {
                     resultDiv.innerHTML = `
                         <h3>Kết quả:</h3>
-                        <p><strong>Mã nhân viên:</strong> ${result[0]}</p>
-                        <p><strong>Họ tên:</strong> ${result[1]}</p>
-                        <p><strong>Mã chuyến bay đi:</strong> ${result[2]}</p>
-                        <p><strong>Giờ bay đi:</strong> ${result[3]}</p>
-<p><strong>Số phòng:</strong> ${result[4]}</p>
-<p><strong>Mã chuyến bay về:</strong> ${result[5]}</p>
-<p><strong>Giờ bay về:</strong> ${result[6]}</p>
+                        <p><strong>Mã nhân viên:</strong> ${result[1]}</p>
+                        <p><strong>Họ và tên:</strong> ${result[2]}</p>
+                        <p><strong>Đơn vị cấp 1:</strong> ${result[3]}</p>
+                        <p><strong>Giới tính:</strong> ${result[4]}</p>
+                        <p><strong>Đoàn đã chọn:</strong> ${result[5]}</p>
+                        <p><strong>Người ở cùng:</strong> ${result[6]}</p>
+                        <p><strong>Số phòng ở KOI:</strong> ${result[7]}</p>
+                        <p><strong>Số phòng ở Balcona:</strong> ${result[8]}</p>
+                        <p><strong>Số xe ở Đà Nẵng:</strong> ${result[9]}</p>
+                        <p><strong>Thông tin vé máy bay CHẶNG ĐI:</strong> ${result[10]}</p>
+                        <p><strong>Thông tin vé máy bay CHẶNG VỀ:</strong> ${result[11]}</p>
                     `;
                 } else {
                     resultDiv.innerHTML = '<p>Không tìm thấy thông tin!</p>';
