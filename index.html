@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tra cứu thông tin từ Google Sheet</title>
+    <title>Tra cứu thông tin MBS25</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -103,17 +103,17 @@
                 if (result) {
                     resultDiv.innerHTML = `
                         <h3>Kết quả:</h3>
-                        <p><strong>Mã nhân viên:</strong> ${result[1]}</p>
-                        <p><strong>Họ và tên:</strong> ${result[2]}</p>
-                        <p><strong>Đơn vị cấp 1:</strong> ${result[3]}</p>
-                        <p><strong>Giới tính:</strong> ${result[4]}</p>
-                        <p><strong>Đoàn đã chọn:</strong> ${result[5]}</p>
-                        <p><strong>Người ở cùng:</strong> ${result[6]}</p>
-                        <p><strong>Số phòng ở KOI:</strong> ${result[7]}</p>
-                        <p><strong>Số phòng ở Balcona:</strong> ${result[8]}</p>
-                        <p><strong>Số xe ở Đà Nẵng:</strong> ${result[9]}</p>
-                        <p><strong>Thông tin vé máy bay CHẶNG ĐI:</strong> ${result[10]}</p>
-                        <p><strong>Thông tin vé máy bay CHẶNG VỀ:</strong> ${result[11]}</p>
+                        <p><strong>Mã nhân viên:</strong> ${result[0]}</p>
+                        <p><strong>Họ và tên:</strong> ${result[1]}</p>
+                        <p><strong>Đơn vị cấp 1:</strong> ${result[2]}</p>
+                        <p><strong>Giới tính:</strong> ${result[3]}</p>
+                        <p><strong>Đoàn đã chọn:</strong> ${result[4]}</p>
+                        <p><strong>Người ở cùng:</strong> ${result[5]}</p>
+                        <p><strong>Số phòng ở KOI:</strong> ${result[6]}</p>
+                        <p><strong>Số phòng ở Balcona:</strong> ${result[7]}</p>
+                        <p><strong>Số xe ở Đà Nẵng:</strong> ${result[8]}</p>
+                        <p><strong>Thông tin vé máy bay CHẶNG ĐI:</strong> ${result[9]}</p>
+                        <p><strong>Thông tin vé máy bay CHẶNG VỀ:</strong> ${result[10]}</p>
                     `;
                 } else {
                     resultDiv.innerHTML = '<p>Không tìm thấy thông tin!</p>';
